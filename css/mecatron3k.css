@@ -26,21 +26,6 @@
   font-weight: bold;
 }
 
-.palabra:nth-child(1){
-  top: 100px;
-  left: 50px;
-}
-
-.palabra:nth-child(2){
-  top: 300px;
-  left: 150px;
-}
-
-.palabra:nth-child(3){
-  top: 200px;
-  left: 250px;
-}
-
 .palabra span{
   color: blue;
 }
