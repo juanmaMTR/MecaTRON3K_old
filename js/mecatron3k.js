@@ -1,6 +1,5 @@
 /**
-  mecatron3k.js
-  Controlador principal del Juego MecaTRON-3000
+  @file Controlador principal del Juego MecaTRON-3000
   @author Miguel Jaque <mjaque@fundacionloyola.es>
   @license GPL v3 2021
 **/
@@ -41,6 +40,7 @@ class Juego{
 
   /**
     Evento de atención a la pulsación del teclado.
+
     Busca las palabras que tienen la letra pulsada y cambia su estado.
     Cambiando el estilo y moviendo las letras de un sitio a otro.
     @param {KeyboardEvent} evento Evento de pulsación del teclado.
