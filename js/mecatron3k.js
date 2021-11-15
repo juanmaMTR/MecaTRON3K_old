@@ -130,4 +130,4 @@ class Modelo{
   }
 }
 
-//var app = new Juego()
+var app = new Juego()
