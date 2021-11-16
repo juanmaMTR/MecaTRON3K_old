@@ -66,9 +66,9 @@ class Juego{
       }
       else{
         //Ha fallado, repongo el texto de la palabra
-
+        nodoTexto.nodeValue = span.textContent + nodoTexto.nodeValue
+        span.textContent = ''
       }
-
     }
   }
 }
@@ -107,9 +107,10 @@ class Vista{
       let top = parseInt(palabra.style.top)
       top += 5
       palabra.style.top = `${top}px`
+      //Si ha llegado al final
+      if (top >= 760)
+        palabra.remove()
     }
-
-    //TODO: Si ha llegado al suelo...
   }
 }
 
