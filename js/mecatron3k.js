@@ -1,6 +1,6 @@
 /**
   @file Controlador principal del Juego MecaTRON-3000
-  @author Miguel Jaque <mjaque@fundacionloyola.es>
+  @author Juan Manuel Toscano Reyes <jtoscanoreyes.guadalupe@alumnado.fundacionloyola.net>
   @license GPL v3 2021
 **/
 
@@ -19,6 +19,7 @@ class Juego{
     this.generadorPalabras = null
     this.animador = null
     this.divPrincipal = null
+    this.contador=null
     window.onload = this.iniciar.bind(this)
   }
   /**
@@ -30,6 +31,7 @@ class Juego{
     this.vista.div = this.divPrincipal
     this.generadorPalabras = window.setInterval(this.generarPalabra.bind(this), 3000)
     this.animador = window.setInterval(this.vista.moverPalabras.bind(this.vista), 300)
+    this.contador=0
     window.onkeypress = this.pulsar.bind(this)
   }
 
@@ -61,7 +63,8 @@ class Juego{
         //Si ha completado la palabra, la elimino y sumo puntos
         if (nodoTexto.nodeValue.length == 0){
           palabra.remove()
-          this.modelo.sumarPunto()
+          this.contador=this.modelo.sumarPunto(this.contador)
+          
         }
       }
       else{
@@ -79,6 +82,8 @@ class Juego{
 class Vista{
   constructor(){
     this.div = null   //Div donde se desarrolla el juego
+    this.Puntuacion=new Puntuacion()
+    this.puntuacion=this.Puntuacion.puntos  //Puntuacion para el juego
   }
   /**
     Dibuja el área de juego.
@@ -119,7 +124,12 @@ class Vista{
 **/
 class Modelo{
   constructor(){
-      this.palabras = ['En', 'un', 'lugar', 'de', 'La', 'Mancha']
+    this.palabras = [
+      ['ju', 'fr', 'fv', 'jm', 'fu', 'jr', 'jv', 'fm'],
+      ['fre', 'jui', 'fui', 'vie', 'mi', 'mery', 'huy'],
+      ['juan', 'remo', 'foca', 'dedo', 'cate']
+    ]
+    this.nivel=0
   }
   /**
     Devuelve una nueva palabra.
@@ -127,7 +137,36 @@ class Modelo{
     @return {String} Palabra generada
   **/
   crearPalabra(){
-    return this.palabras[Math.floor(Math.random() * this.palabras.length)]
+    return this.palabras[this.nivel][Math.floor(Math.random() * this.palabras.length)]
+  }
+  /**
+   * Entro en sumarPuntos cada vez que completo una palabra
+   */
+  sumarPunto(contador){
+    contador=contador++
+    //console.log(contador);
+    //document.getElementById('puntuacion').innerHTML=contador
+    //return contador
+  }
+  /**
+   * Incremento el nivel del juego
+   */
+  incrementarNivel(){
+
+  }
+  /**
+   * Disminuyo el nivel del juego
+   */
+  disminuirNivel(){
+
+  }
+}
+class Puntuacion{
+  constructor(){
+    this.puntos=0
+  }
+  mostrar(){
+    document.getElementById('puntuacion').innerHTML=this.puntos
   }
 }
 
